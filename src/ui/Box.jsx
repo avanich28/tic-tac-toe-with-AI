@@ -1,5 +1,13 @@
-import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const players = {
+  x: css`
+    color: var(--color-yellow);
+  `,
+  o: css`
+    color: var(--color-red);
+  `,
+};
 
 const StyledBox = styled.div`
   width: 100px;
@@ -11,33 +19,19 @@ const StyledBox = styled.div`
   justify-content: center;
   font-size: 75px;
   animation: expand 1.2s forwards;
+
+  /* BUG */
+  ${(props) => players[props.player]}
 `;
 
 const Symbol = styled.span`
-  animation: expand 2s forwards;
+  animation: expand 0.1s forwards;
 `;
 
-function Box({ num }) {
-  const [choice, setChoice] = useState(null);
-
-  function handleClickChoice(player = "o") {
-    setChoice(player);
-  }
-
-  function clearBox() {
-    setChoice("");
-  }
-
+function Box({ num, player, onSpot }) {
   return (
-    <StyledBox
-      style={
-        choice === "x"
-          ? { color: "var(--color-yellow)" }
-          : { color: "var(--color-red)" }
-      }
-      onClick={() => handleClickChoice("x")}
-    >
-      <Symbol>{choice}</Symbol>
+    <StyledBox player={player} onClick={() => onSpot(num)}>
+      {typeof player !== "number" && <Symbol>{player}</Symbol>}
     </StyledBox>
   );
 }

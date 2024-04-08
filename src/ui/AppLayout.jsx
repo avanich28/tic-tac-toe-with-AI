@@ -5,6 +5,7 @@ import Main from "./Main";
 
 const StyledAppLayout = styled.div`
   height: 100vh;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
