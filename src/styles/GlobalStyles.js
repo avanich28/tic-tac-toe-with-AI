@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   --color-red: #bb371a;
   --color-yellow: #eba83a;
   --color-green: #d5dbb3;
+	--color-purple: #704264;
 }
 
 html, body, div, span, applet, object, iframe,
