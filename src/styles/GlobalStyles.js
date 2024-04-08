@@ -57,6 +57,16 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+@keyframes expand {
+	0% {transform: scale(0); opacity: 0;}
+	100% {transform: scale(1); opacity: 1;}
+}
+
+@keyframes unhide {
+	0% {opacity: 0}
+	100% {opacity: 1}
+}
 `;
 
 export default GlobalStyles;

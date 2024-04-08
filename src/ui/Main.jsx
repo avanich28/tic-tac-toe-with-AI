@@ -5,6 +5,7 @@ import Button from "./Button";
 const StyledMain = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 `;
 

@@ -10,10 +10,15 @@ const StyledBox = styled.div`
   display: flex;
   justify-content: center;
   font-size: 75px;
+  animation: expand 1.2s forwards;
+`;
+
+const Symbol = styled.span`
+  animation: expand 2s forwards;
 `;
 
 function Box({ num }) {
-  const [choice, setChoice] = useState("");
+  const [choice, setChoice] = useState(null);
 
   function handleClickChoice(player = "o") {
     setChoice(player);
@@ -32,7 +37,7 @@ function Box({ num }) {
       }
       onClick={() => handleClickChoice("x")}
     >
-      {choice}
+      <Symbol>{choice}</Symbol>
     </StyledBox>
   );
 }

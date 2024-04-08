@@ -9,6 +9,7 @@ const StyledFooter = styled.a`
   font-size: small;
   text-decoration: none;
   color: var(--color-dark);
+  animation: expand 1.2s forwards;
 
   &:hover {
     color: var(--color-red);
