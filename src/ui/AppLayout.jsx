@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
+import Setting from "./Setting";
 
 const StyledAppLayout = styled.div`
   height: 100vh;
@@ -16,6 +17,7 @@ const StyledAppLayout = styled.div`
 function AppLayout() {
   return (
     <StyledAppLayout>
+      <Setting />
       <Header />
       <Main />
       <Footer />

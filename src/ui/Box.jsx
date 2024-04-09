@@ -20,7 +20,6 @@ const StyledBox = styled.div`
   font-size: 75px;
   animation: expand 1.2s forwards;
 
-  /* BUG */
   ${(props) => players[props.player]}
 `;
 

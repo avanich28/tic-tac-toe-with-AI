@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   --color-red: #bb371a;
   --color-yellow: #eba83a;
   --color-green: #d5dbb3;
-	--color-purple: #704264;
+	--color-purple: #bb8493;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -68,6 +68,19 @@ table {
 	0% {opacity: 0}
 	100% {opacity: 1}
 }
+
+@keyframes moveDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
 `;
 
 export default GlobalStyles;

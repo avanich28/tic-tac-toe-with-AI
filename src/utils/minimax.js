@@ -1,5 +1,4 @@
-export const HUMAN = "x";
-export const AI = "o";
+import { PLAYER1_OR_HUMAN, PLAYER2_OR_AI } from "./constant";
 
 function emptySpots(board) {
   return board.filter((el) => el !== "x" && el !== "o");
@@ -21,11 +20,11 @@ export function isWin(board, player) {
   return false;
 }
 
-export function minimax(board, player = AI) {
+export function minimax(board, player = PLAYER2_OR_AI) {
   const availableSpots = emptySpots(board);
 
-  if (isWin(board, HUMAN)) return { score: -10 };
-  else if (isWin(board, AI)) return { score: 10 };
+  if (isWin(board, PLAYER1_OR_HUMAN)) return { score: -10 };
+  else if (isWin(board, PLAYER2_OR_AI)) return { score: 10 };
   else if (availableSpots.length === 0) return { score: 0 };
 
   const moves = [];
@@ -39,11 +38,11 @@ export function minimax(board, player = AI) {
     board[availableSpots[i]] = player;
 
     // Switch player
-    if (player === AI) {
-      const result = minimax(board, HUMAN);
+    if (player === PLAYER2_OR_AI) {
+      const result = minimax(board, PLAYER1_OR_HUMAN);
       move.score = result.score;
     } else {
-      const result = minimax(board, AI);
+      const result = minimax(board, PLAYER2_OR_AI);
       move.score = result.score;
     }
 
@@ -55,7 +54,7 @@ export function minimax(board, player = AI) {
   }
 
   let bestMove;
-  if (player === AI) {
+  if (player === PLAYER2_OR_AI) {
     // Worst case
     let bestScore = -10000;
 

@@ -7,7 +7,7 @@ const StyledHeader = styled.h1`
 `;
 
 function Header() {
-  return <StyledHeader>Tic Tac Toe - AI</StyledHeader>;
+  return <StyledHeader>Tic Tac Toe</StyledHeader>;
 }
 
 export default Header;
