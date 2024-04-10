@@ -55,6 +55,9 @@ body {
   color: var(--color-dark);
   background-color: var(--color-light);
 	letter-spacing: 0.5px;
+
+	/* animation for dark mode */
+	transition: color 0.3s, background-color 0.3s;
 }
 ol, ul {
 	list-style: none;

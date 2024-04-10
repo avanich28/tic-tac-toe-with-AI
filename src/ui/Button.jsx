@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   transition: all 0.3s ease-in-out;
   font-family: "Darumadrop One", sans-serif;
   animation: unhide 2s forwards;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.03);

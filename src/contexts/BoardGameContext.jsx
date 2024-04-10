@@ -19,10 +19,10 @@ function BoardGameProvider({ children }) {
   );
   const [result, setResult] = useState("");
   const [player, setPlayer] = useState(PLAYER1_OR_HUMAN);
-  const { modeAI } = useSetting();
+  const { AIMode } = useSetting();
 
   function checkWinner(board, str1 = WIN, str2 = LOSE) {
-    if (!modeAI) {
+    if (!AIMode) {
       str1 = `${PLAYER1_OR_HUMAN} ${WIN}`;
       str2 = `${PLAYER2_OR_AI} ${WIN}`;
     }
@@ -37,7 +37,7 @@ function BoardGameProvider({ children }) {
 
     const tempBoard = currentBoard.slice(0);
 
-    if (modeAI) {
+    if (AIMode) {
       tempBoard[humanMove] = PLAYER1_OR_HUMAN;
 
       const { index: aiMove } = minimax(tempBoard);
@@ -56,7 +56,7 @@ function BoardGameProvider({ children }) {
   function handleRestart() {
     setCurrentBoard((arr) => arr.map((_, i) => i));
     setResult(null);
-    if (!modeAI) setPlayer(PLAYER1_OR_HUMAN);
+    if (!AIMode) setPlayer(PLAYER1_OR_HUMAN);
   }
 
   return (

@@ -5,8 +5,9 @@ import { TbRobotOff } from "react-icons/tb";
 import { FiSun } from "react-icons/fi";
 import { FiMoon } from "react-icons/fi";
 import { useSetting } from "../contexts/SettingContext";
-import IconButton from "./IconButton";
 import { useBoardGame } from "../contexts/BoardGameContext";
+import IconButton from "./IconButton";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const StyledSetting = styled.div`
   position: absolute;
@@ -31,13 +32,15 @@ function Setting() {
     toggleSetting,
     toggleAIMode,
     toggleDarkMode,
+    setIsOpen,
   } = useSetting();
   const { handleRestart } = useBoardGame();
+  const ref = useOutsideClick(() => setIsOpen(false));
 
   return (
-    <StyledSetting>
+    <StyledSetting ref={ref}>
       <Mode>Mode: {AIMode ? "AI" : "Human"}</Mode>
-      <IconButton onClick={toggleSetting} type="secondary" isActive={isOpen}>
+      <IconButton onClick={toggleSetting} type="secondary" active={isOpen}>
         <FaGear />
       </IconButton>
 

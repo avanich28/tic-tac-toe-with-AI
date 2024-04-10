@@ -20,7 +20,7 @@ const StyledBox = styled.div`
   font-size: 75px;
   animation: expand 1.2s forwards;
 
-  ${(props) => players[props.player]}
+  ${(props) => players[props.$player]}
 `;
 
 const Symbol = styled.span`
@@ -29,7 +29,7 @@ const Symbol = styled.span`
 
 function Box({ num, player, onSpot }) {
   return (
-    <StyledBox player={player} onClick={() => onSpot(num)}>
+    <StyledBox $player={player} onClick={() => onSpot(num)}>
       {typeof player !== "number" && <Symbol>{player}</Symbol>}
     </StyledBox>
   );

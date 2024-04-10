@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useBoardGame } from "./BoardGameContext";
+import { useLocaleStorage } from "../hooks/useLocaleStorage";
 
 const SettingContext = createContext();
 
 function SettingProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [AIMode, setAIMode] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useLocaleStorage(false, "isDarkMode");
 
   useEffect(
     function () {
@@ -42,6 +42,7 @@ function SettingProvider({ children }) {
         toggleSetting,
         toggleAIMode,
         toggleDarkMode,
+        setIsOpen,
       }}
     >
       {children}

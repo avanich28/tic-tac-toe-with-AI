@@ -11,7 +11,7 @@ const types = {
     color: var(--color-dark);
     transition: all 0.3s ease-in-out;
     ${(props) =>
-      props.isActive
+      props.$active === true
         ? css`
             transform: rotate(20deg);
           `
@@ -32,12 +32,12 @@ const Button = styled.button`
   font-size: 20px;
   cursor: pointer;
 
-  ${(props) => types[props.type]}
+  ${(props) => types[props.$type]}
 `;
 
-function IconButton({ children, onClick, type = "primary", isActive }) {
+function IconButton({ children, onClick, type = "primary", active }) {
   return (
-    <Button onClick={onClick} type={type} isActive={isActive}>
+    <Button onClick={onClick} $type={type} $active={active}>
       {children}
     </Button>
   );
