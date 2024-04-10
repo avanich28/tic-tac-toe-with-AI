@@ -1,13 +1,49 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useBoardGame } from "./BoardGameContext";
 
 const SettingContext = createContext();
 
 function SettingProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [modeAI, setModeAI] = useState(true);
+  const [AIMode, setAIMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(
+    function () {
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark-mode");
+        document.documentElement.classList.remove("light-mode");
+      } else {
+        document.documentElement.classList.add("light-mode");
+        document.documentElement.classList.remove("dark-mode");
+      }
+    },
+    [isDarkMode]
+  );
+
+  function toggleSetting() {
+    setIsOpen((is) => !is);
+  }
+
+  function toggleAIMode() {
+    setAIMode((isAI) => !isAI);
+  }
+
+  function toggleDarkMode() {
+    setIsDarkMode((isDark) => !isDark);
+  }
 
   return (
-    <SettingContext.Provider value={{ isOpen, setIsOpen, modeAI, setModeAI }}>
+    <SettingContext.Provider
+      value={{
+        isOpen,
+        AIMode,
+        isDarkMode,
+        toggleSetting,
+        toggleAIMode,
+        toggleDarkMode,
+      }}
+    >
       {children}
     </SettingContext.Provider>
   );

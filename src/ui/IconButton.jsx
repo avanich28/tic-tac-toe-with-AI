@@ -7,7 +7,7 @@ const types = {
     animation: moveDown 0.3s forwards;
   `,
   secondary: css`
-    background-color: var(--color-light);
+    background-color: transparent;
     color: var(--color-dark);
     transition: all 0.3s ease-in-out;
     ${(props) =>

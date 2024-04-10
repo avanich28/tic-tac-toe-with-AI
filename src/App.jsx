@@ -1,3 +1,4 @@
+import { BoardGameProvider } from "./contexts/BoardGameContext";
 import { SettingProvider } from "./contexts/SettingContext";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
@@ -7,7 +8,9 @@ function App() {
     <>
       <GlobalStyles />
       <SettingProvider>
-        <AppLayout />
+        <BoardGameProvider>
+          <AppLayout />
+        </BoardGameProvider>
       </SettingProvider>
     </>
   );

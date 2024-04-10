@@ -2,13 +2,26 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 :root {
-  --color-light: #fefbf6;
-  --color-dark: #4a403a;
-	--color-white: #fff8d9;
-  --color-red: #bb371a;
-  --color-yellow: #eba83a;
-  --color-green: #d5dbb3;
-	--color-purple: #bb8493;
+	&, &.light-mode {
+		--color-light: #fefbf6;
+		--color-dark: #4a403a;
+		--color-white: #fff8d9;
+		--color-red: #bb371a;
+		--color-yellow: #eba83a;
+		--color-green: #d5dbb3;
+		--color-purple: #bb8493;
+	}
+
+	&.dark-mode {
+		--color-light: #2d2424;
+		--color-dark: #E79E4F;
+		--color-white: #a05344;
+		--color-red: #bb371a;
+		--color-yellow: #519872;
+		--color-green: #734046;
+		--color-purple: #bb8493;
+	}
+
 }
 
 html, body, div, span, applet, object, iframe,

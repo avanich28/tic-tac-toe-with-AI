@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { FaGear } from "react-icons/fa6";
 import { TbRobot } from "react-icons/tb";
 import { TbRobotOff } from "react-icons/tb";
+import { FiSun } from "react-icons/fi";
+import { FiMoon } from "react-icons/fi";
 import { useSetting } from "../contexts/SettingContext";
 import IconButton from "./IconButton";
+import { useBoardGame } from "../contexts/BoardGameContext";
 
 const StyledSetting = styled.div`
   position: absolute;
@@ -21,23 +24,38 @@ const Mode = styled.p`
 `;
 
 function Setting() {
-  const { isOpen, setIsOpen, modeAI, setModeAI } = useSetting();
+  const {
+    isOpen,
+    AIMode,
+    isDarkMode,
+    toggleSetting,
+    toggleAIMode,
+    toggleDarkMode,
+  } = useSetting();
+  const { handleRestart } = useBoardGame();
 
   return (
     <StyledSetting>
-      <Mode>Mode: {modeAI ? "AI" : "Human"}</Mode>
-      <IconButton
-        onClick={() => setIsOpen((is) => !is)}
-        type="secondary"
-        isActive={isOpen}
-      >
+      <Mode>Mode: {AIMode ? "AI" : "Human"}</Mode>
+      <IconButton onClick={toggleSetting} type="secondary" isActive={isOpen}>
         <FaGear />
       </IconButton>
 
       {isOpen && (
-        <IconButton onClick={() => setModeAI((is) => !is)}>
-          {modeAI ? <TbRobot /> : <TbRobotOff />}
-        </IconButton>
+        <>
+          <IconButton
+            onClick={() => {
+              handleRestart();
+              toggleAIMode();
+            }}
+          >
+            {AIMode ? <TbRobot /> : <TbRobotOff />}
+          </IconButton>
+
+          <IconButton onClick={toggleDarkMode}>
+            {isDarkMode ? <FiSun /> : <FiMoon />}
+          </IconButton>
+        </>
       )}
     </StyledSetting>
   );
