@@ -20,7 +20,12 @@ export function isWin(board, player) {
   return false;
 }
 
-export function minimax(board, player = PLAYER2_OR_AI) {
+export function minimax(
+  board,
+  player = PLAYER2_OR_AI,
+  alpha = -Infinity,
+  beta = Infinity
+) {
   const availableSpots = emptySpots(board);
 
   if (isWin(board, PLAYER1_OR_HUMAN)) return { score: -10 };
@@ -39,11 +44,15 @@ export function minimax(board, player = PLAYER2_OR_AI) {
 
     // Switch player
     if (player === PLAYER2_OR_AI) {
-      const result = minimax(board, PLAYER1_OR_HUMAN);
+      const result = minimax(board, PLAYER1_OR_HUMAN, alpha, beta);
       move.score = result.score;
+
+      alpha = Math.max(alpha, result.score);
     } else {
-      const result = minimax(board, PLAYER2_OR_AI);
+      const result = minimax(board, PLAYER2_OR_AI, alpha, beta);
       move.score = result.score;
+
+      beta = Math.min(beta, result.score);
     }
 
     // Reset to Temp
@@ -51,6 +60,8 @@ export function minimax(board, player = PLAYER2_OR_AI) {
 
     // Store index + score
     moves.push(move);
+
+    if (beta <= alpha) break;
   }
 
   let bestMove;
