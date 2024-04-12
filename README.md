@@ -4,5 +4,5 @@ Players can choose to play the game with the general player or AI. Just start th
 
 ## Tech Stack
 
-<strong>Client:</strong> React and Styled-components
+<strong>Client:</strong> React and Styled-components <br/>
 <strong>Algorithms:</strong> Minimax with alpha-beta pruning
